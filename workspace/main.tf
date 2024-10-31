@@ -4,6 +4,7 @@ provider "google" {
   credentials = file(var.credentials_file)
 }
 
+# Create a GKE cluster
 resource "google_container_cluster" "primary" {
   name     = var.cluster_name
   location = var.region
@@ -27,6 +28,7 @@ resource "google_container_cluster" "primary" {
   # Add any additional configurations as needed
 }
 
+# Create a node pool for the GKE cluster
 resource "google_container_node_pool" "primary_nodes" {
   cluster    = google_container_cluster.primary.name
   location   = google_container_cluster.primary.location
