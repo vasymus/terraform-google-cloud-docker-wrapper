@@ -1,0 +1,36 @@
+# Ignore logs and other local files
+*.log
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Ignore core Terraform directories
+workspace/.terraform
+
+# Terraform state files
+workspace/*.tfstate
+workspace/*.tfstate.*
+
+# Terraform backup files
+workspace/*.backup
+
+# Terraform crash log
+workspace/crash.log
+
+# Terraform variable override files
+workspace/override.tf
+workspace/override.tf.json
+workspace/*_override.tf
+workspace/*_override.tf.json
+
+# Sensitive information and local environment files
+workspace/terraform.tfvars
+workspace/*.auto.tfvars
+
+# Ignore generated plan files
+workspace/*.tfplan
+
+
+# Optional: Ignore keys if stored locally (example for service account keys)
+workspace/keys/*.json

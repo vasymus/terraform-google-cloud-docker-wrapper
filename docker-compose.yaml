@@ -1,0 +1,20 @@
+services:
+    terraform:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        volumes:
+            - ./workspace:/workspace
+        environment:
+            # Google Cloud credentials (used by gcloud and Google provider)
+            - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-/workspace/keys/terraform-k8-dr-w-38877652fcbd.json}
+            # Set default project for gcloud commands
+            - CLOUDSDK_CORE_PROJECT=${CLOUDSDK_CORE_PROJECT:-terraform-k8-dr-w}
+            # TF_VAR_ prefix. Terraform will recognize environment variables prefixed with TF_VAR_ as input variable values
+            - TF_VAR_project_id=${CLOUDSDK_CORE_PROJECT:-terraform-k8-dr-w}
+            - TF_VAR_region=${TF_VAR_REGION:-us-west1}
+            - TF_VAR_credentials_file=${GOOGLE_APPLICATION_CREDENTIALS:-/workspace/keys/terraform-k8-dr-w-38877652fcbd.json}
+            - TF_VAR_cluster_name=${TF_VAR_CLUSTER_NAME:-my-gke-cluster}
+            - TF_VAR_node_count=${TF_VAR_NODE_COUNT:-3}
+            - TF_VAR_machine_type=${TF_VAR_MACHINE_TYPE:-f1-micro}
+        command: /bin/bash
