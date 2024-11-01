@@ -38,10 +38,6 @@ resource "google_container_node_pool" "primary_nodes" {
   node_config {
     machine_type = var.machine_type
 
-    # temporary
-    disk_size_gb = 10
-    disk_type    = "pd-standard"
-
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",
     ]

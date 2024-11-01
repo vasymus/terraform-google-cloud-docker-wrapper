@@ -18,7 +18,7 @@ services:
             - TF_VAR_cluster_name=${TF_VAR_CLUSTER_NAME:-my-gke-cluster}
             - TF_VAR_node_count=${TF_VAR_NODE_COUNT:-1}
             - TF_VAR_machine_type=${TF_VAR_MACHINE_TYPE:-e2-small}
-            - TF_VAR_deletion_protection=${TF_VAR_deletion_protection:-true}
+            - TF_VAR_deletion_protection=${TF_VAR_deletion_protection:-false}
         command: /bin/bash
         # make this service run and off only when specify its name:
         # docker-compose up -d terraform
