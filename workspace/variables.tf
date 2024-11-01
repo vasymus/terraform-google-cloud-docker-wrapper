@@ -31,3 +31,9 @@ variable "machine_type" {
   type        = string
   default     = "f1-micro"
 }
+
+variable "deletion_protection" {
+  description = "Enable deletion protection for the GKE cluster"
+  type        = bool
+  default     = false
+}

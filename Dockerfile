@@ -24,6 +24,9 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -s https://storage.googleapis.com
     chmod +x kubectl && \
     mv kubectl /usr/local/bin/
 
+# Install gke-gcloud-auth-plugin
+RUN gcloud components install gke-gcloud-auth-plugin --quiet
+
 # Set working directory
 WORKDIR /workspace
 
